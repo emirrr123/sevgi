@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>I Love You — For My Love</title>
+    <style>
+        :root {
+            --bg1: #0f172a;
+            --bg2: #0b1020;
+            --accent: #ff4d8a;
+            --accent2: #ffb3c6;
+            --glass: rgba(255, 255, 255, 0.06);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: radial-gradient(1200px 600px at 10% 20%, rgba(255, 77, 138, 0.06), transparent),
+                radial-gradient(1000px 500px at 90% 80%, rgba(255, 179, 198, 0.04), transparent),
+                linear-gradient(180deg, var(--bg1), var(--bg2));
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 920px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(6px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin: 0 0 0.5rem 0;
+            letter-spacing: 0.02em;
+            line-height: 1;
+            text-shadow: 0 6px 22px rgba(255, 77, 138, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .sub {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1.25rem;
+        }
+
+        .big-heart {
+            width: 84px;
+            height: 84px;
+            display: inline-block;
+            transform: translateY(4px);
+        }
+
+        p.lead {
+            margin: 1.25rem 0 1.5rem 0;
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+
+        .cta {
+            display: inline-flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.25rem;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            color: #081028;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255, 77, 138, 0.18);
+            transform: translateZ(0);
+        }
+
+        .small {
+            font-size: 0.85rem;
+            opacity: 0.9
+        }
+
+        /* Floating hearts layer */
+        .hearts-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1
+        }
+
+        .heart {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            transform-origin: center;
+            opacity: 0.85;
+            will-change: transform, opacity;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.95
+            }
+
+            100% {
+                transform: translateY(-140vh) scale(1.4) rotate(360deg);
+                opacity: 0
+            }
+        }
+
+        /* decorative footer text */
+        .footer {
+            margin-top: 1.75rem;
+            font-size: 0.9rem;
+            opacity: 0.75;
+        }
+
+        /* responsive */
+        @media (max-width:520px) {
+            .card {
+                padding: 2rem
+            }
+        }
+
+        /* little pulse for the big heart */
+        @keyframes pulse {
+            0% {
+                transform: scale(1)
+            }
+
+            50% {
+                transform: scale(1.06)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        .pulse {
+            animation: pulse 1.2s infinite
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hearts-layer" id="hearts"></div>
+
+    <main class="card" role="main">
+        <h1>
+            <svg class="big-heart pulse" viewBox="0 0 32 29" aria-hidden="true">
+                <path
+                    d="M23.6 0c-2.9 0-4.9 1.9-6 3.1C16.3 1.9 14.3 0 11.4 0 5.1 0 0 4.9 0 11c0 9.1 9.6 14.7 16 18.4 6.4-3.7 16-9.3 16-18.4C32 4.9 26.9 0 23.6 0z"
+                    fill="url(#g)" />
+                <defs>
+                    <linearGradient id="g" x1="0" x2="1">
+                        <stop offset="0%" stop-color="#ff82ab" />
+                        <stop offset="100%" stop-color="#ff3d77" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            I love you
+        </h1>
+        <div class="sub">For the one who fills my days with warmth</div>
+
+        <p class="lead">This little site is made just for you — hearts everywhere, a soft glow and one big message:
+            <strong>I love you.</strong></p>
+
+        <button class="cta" id="sendHeartBtn" title="Send a heart">Send a heart ♥</button>
+
+        <div class="footer small">Click anywhere to shower hearts. Save this file as <code>i-love-you.html</code> and
+            open in a browser.</div>
+    </main>
+
+    <script>
+        // Utility to create a heart SVG element
+        function createHeartElement(size, color) {
+            const ns = 'http://www.w3.org/2000/svg';
+            const svg = document.createElementNS(ns, 'svg');
+            svg.setAttribute('viewBox', '0 0 32 29');
+            svg.setAttribute('class', 'heart');
+            svg.setAttribute('width', size);
+            svg.setAttribute('height', size);
+            const path = document.createElementNS(ns, 'path');
+            path.setAttribute('d', 'M23.6 0c-2.9 0-4.9 1.9-6 3.1C16.3 1.9 14.3 0 11.4 0 5.1 0 0 4.9 0 11c0 9.1 9.6 14.7 16 18.4 6.4-3.7 16-9.3 16-18.4C32 4.9 26.9 0 23.6 0z');
+            path.setAttribute('fill', color);
+            svg.appendChild(path);
+            return svg;
+        }
+
+        const layer = document.getElementById('hearts');
+        const colors = ['#ff4d8a', '#ff8fb3', '#ffb3c6', '#ffd6e1'];
+
+        // spawn a heart at x,y (page coords)
+        function spawnHeart(x, y, size) {
+            const heart = createHeartElement(size || (18 + Math.random() * 18), colors[Math.floor(Math.random() * colors.length)]);
+            heart.style.left = (x - (size || 24) / 2) + 'px';
+            heart.style.top = y + 'px';
+            const dur = 6 + Math.random() * 4; // seconds
+            heart.style.animation = `floatUp ${dur}s linear forwards`;
+            heart.style.transform = `translateY(0) rotate(${Math.random() * 40 - 20}deg)`;
+            layer.appendChild(heart);
+            // remove after animation
+            setTimeout(() => { if (heart && heart.parentNode) heart.parentNode.removeChild(heart); }, (dur + 0.3) * 1000);
+        }
+
+        // spawn random hearts from bottom for ambiance
+        function ambientHearts() {
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            const x = Math.random() * vw;
+            const y = window.innerHeight + 20;
+            spawnHeart(x, y, 18 + Math.random() * 22);
+            // random interval
+            setTimeout(ambientHearts, 400 + Math.random() * 900);
+        }
+        ambientHearts();
+
+        // click anywhere to shower a cluster
+        window.addEventListener('click', function (e) {
+            const count = 6 + Math.floor(Math.random() * 8);
+            for (let i = 0; i < count; i++) {
+                // slight spread
+                const rx = e.pageX + (Math.random() * 120 - 60);
+                const ry = e.pageY + (Math.random() * 40 - 20);
+                const sz = 16 + Math.random() * 28;
+                setTimeout(() => spawnHeart(rx, ry, sz), i * 60);
+            }
+        });
+
+        // button to send a single big heart from center
+        document.getElementById('sendHeartBtn').addEventListener('click', function () {
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+            for (let i = 0; i < 10; i++) {
+                const rx = cx + (Math.random() * 220 - 110);
+                const ry = cy + (Math.random() * 120 - 60);
+                spawnHeart(rx, ry, 20 + Math.random() * 40);
+            }
+            // small pulse effect on button
+            this.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(1.06)' },
+                { transform: 'scale(1)' }
+            ], { duration: 420, easing: 'ease-out' });
+        });
+
+        // make sure hearts layer fills full page and reorder on resize
+        function resizeLayer() { layer.style.width = window.innerWidth + 'px'; layer.style.height = window.innerHeight + 'px'; }
+        window.addEventListener('resize', resizeLayer);
+        resizeLayer();
+    </script>
+</body>
+
+</html>
